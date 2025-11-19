@@ -116,11 +116,11 @@ void removeIndice(Lista* l, int i){
     }
     free(atual);
 }
-void imprime(Lista * l){
-    No* aux = l->cabeca;
-    while(aux!=NULL){
-        printf("%d ",aux->chave);
-        aux = aux->proximo;
+void imprimeIterativo(Lista *l){
+    No *nozes = l->cabeca;
+    while (nozes != NULL){
+        printf("%d ", nozes->chave);
+        nozes = nozes->proximo;
     }
     printf("\n");
 }
