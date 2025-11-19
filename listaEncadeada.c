@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void criaFila(){
-    Lista* novaLista = criaLista();
+Lista* criaLista(){
+    Lista* novaLista = malloc(sizeof(Lista));
     novaLista->cabeca = NULL;
     return novaLista;
 }
@@ -32,9 +32,9 @@ No* busca(Lista* l, int chave){
     return no;
 }
 
-void insere(Lista* l, int i){
+void insere(Lista* l, int i, int valor){
     No* novo = malloc(sizeof(No));
-    novo -> chave;
+    novo -> chave = valor;
     if(i == 0){
         novo->proximo = l->cabeca;
         novo->anterior = NULL;
@@ -66,7 +66,7 @@ void insere(Lista* l, int i){
 void removeValor(Lista* l, int valor){
     No* atual = l->cabeca;
     No* anterior = NULL;
-    while(atual != NULL){
+    while(atual != NULL && atual->chave != valor){
         anterior = atual;
         atual = atual->proximo;
     }
@@ -115,4 +115,12 @@ void removeIndice(Lista* l, int i){
         atual->proximo->anterior = anterior;
     }
     free(atual);
+}
+void imprime(Lista * l){
+    No* aux = l->cabeca;
+    while(aux!=NULL){
+        printf("%d ",aux->chave);
+        aux = aux->proximo;
+    }
+    printf("\n");
 }
